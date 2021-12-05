@@ -60,12 +60,20 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
 
 
 - Linux安装：
+
   会用linux不应该为小白
+  
   更新源:`sudo apt-get update`
+  
   安装jdk:`sudo apt-get install openjdk-17-jdk` 
+  
+  
   安装adb:`sudo apt-get install adb`
+  
   克隆文件到本地:`sudo git clone https://github.com/xmexg/yxyADBkbd.git`
-  `cd`到这个jar文件目录:`cd ./yxyADBkbd/Releases/`
+  
+  cd到这个jar文件目录:`cd ./yxyADBkbd/Releases/`
+  
   运行jar文件:`java -jar ./default.jar`
   ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/linux_jar.png)
 
@@ -78,14 +86,13 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
   
   方法二：在手机设置的语言和键盘中，将当前输入法换成别的任意输入法即可
   
-  方法三：电脑终端输入adb shell ime list -a 回车
-  
-  记下想使用的输入法的名称（每一段的开头为这个输入法的名称）
-  ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/imelist.png)
-  
-  我选择搜狗输入法，如图白色所示
-  ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/imeset.png)
-  输入代码：adb shell ime set com.sohu.inputmethod.sogou.xiaomi/.SogouIME即可切换到该输入法
+  方法三：
+  1. 电脑终端输入adb shell ime list -a 回车    
+  2. 记下想使用的输入法的名称（每一段的开头为这个输入法的名称）
+   ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/imelist.png)
+  3.  我选择搜狗输入法，如图白色所示
+   ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/imeset.png)
+  4. 输入代码：`adb shell ime set com.sohu.inputmethod.sogou.xiaomi/.SogouIME`即可切换到该输入法
 
 
 
