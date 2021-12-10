@@ -4,7 +4,6 @@
 ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向大佬致敬！
 
 # 正文：
-[优学院粘贴.docx](https://github.com/xmexg/yxyadbkb/files/7654209/default.docx) （待删除）
 
 ### 运行环境：
 - 电脑：
@@ -60,8 +59,6 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
 
 
 - Linux安装：
-
-  会用linux不应该为小白
   
   更新源:`sudo apt-get update`
   
