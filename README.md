@@ -35,7 +35,7 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
   
       直接使用已打包的jar：
       
-        下载已打包的jar：https://github.com/xmexg/yxyADBkbd/releases/tag/Releases
+        下载已打包的jar：https://github.com/xmexg/yxyADBkbd/releases/
         
         打开此电脑，进入这个文件保存目录，并在文件导航栏输入cmd，回车，弹出命令行
         ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/explorer_cmd.png)
