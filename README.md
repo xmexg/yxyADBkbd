@@ -31,7 +31,7 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
       
       官网下载：https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe
   2. 安装ADB：https://blog.csdn.net/x2584179909/article/details/108319973
-  4. 启动：
+  3. 启动：
   
       直接使用已打包的jar：
       
@@ -40,12 +40,16 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
         打开此电脑，进入这个文件保存目录，并在文件导航栏输入cmd，回车，弹出命令行
         ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/explorer_cmd.png)
 
-   5. 把手机通过数据线连接电脑，手机提示usb调试就点允许
+   4. 把手机通过数据线连接电脑，手机提示usb调试就点允许
       ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/phone_usb.jpg)
       
-   6. 手机打开优学院简答题输入框。
+   5. 手机打开优学院简答题输入框。
    
-   7. 电脑在刚才弹出的命令行输入 `java  -jar  ./优学院(具体下载的名称).jar` 回车
+   6. 在v2.0版本开始中支持图形界面了，命令行通过　`java -Dgui=true -Dfile.encoding=UTF-8 -jar xxx.jar`　可打开图形界面
+      其中　`-Dfile.encoding=UTF-8`　是指定使用UTF-8编码，当当前操作系统默认编码不为UTF-8编码时不可省略。
+      ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/v2.0GUI.png)
+      
+   <strike>6. 电脑在刚才弹出的命令行输入 `java  -jar  ./优学院(具体下载的名称).jar` 回车
    
       如下情况可拔掉手机线重新连接，然后重新输入上面这条命令
       ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/cannotconnect.png)
@@ -53,8 +57,10 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
       如下情况连接成功：
       ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/connect.png)
 
-   8. 点击手机要输入文字的输入框，让手机处于正在输入的状态，在此处粘贴要粘贴的文字，注意这段文字不能有回车，然后按回车，他会发送到手机输入框。
-      注：空格会被自动取消。
+   7. 点击手机要输入文字的输入框，让手机处于正在输入的状态，在此处粘贴要粘贴的文字，注意这段文字不能有回车，然后按回车，他会发送到手机输入框。
+      注：空格会被自动取消。</strike>
+      
+   
 
 
 
