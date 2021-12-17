@@ -80,7 +80,7 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
   运行jar文件:`java -jar ./default.jar`
   ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/linux_jar.png)
 
-### 结尾：
+<strike>### 结尾：
   当前输入法无法正常打字
   
   切换到其他输入法：
@@ -95,8 +95,9 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
    ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/imelist.png)
   3.  我选择搜狗输入法，如图白色所示
    ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/imeset.png)
-  4. 输入代码：`adb shell ime set com.sohu.inputmethod.sogou.xiaomi/.SogouIME`即可切换到该输入法
-
+  4. 输入代码：`adb shell ime set com.sohu.inputmethod.sogou.xiaomi/.SogouIME`即可切换到该输入法</strike>
+  
+  v2.1版已经可以自动切换键盘了
 
 
 
