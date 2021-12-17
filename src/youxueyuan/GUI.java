@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 
 //v2.0新增GUI界面
 public class GUI {
-	public static JFrame windows = new JFrame("优学院考试粘贴 v2.0");//创建窗体
+	public static JFrame windows = new JFrame("优学院考试粘贴 v2.1");//创建窗体
 	public void start() {
 		//窗口部分
 		windows.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//设置窗口关闭方式为退出并关闭程序
