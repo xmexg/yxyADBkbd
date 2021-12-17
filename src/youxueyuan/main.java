@@ -11,7 +11,27 @@ public class main {
 		 * 命令行运行jar时直接输入文字:java -jar xxx.jar "此处填入要输入的内容"
 		 */
 
+		System.out.println(" ________________________\r\n"
+				+ "< 优学院考试粘贴解决方案 >\r\n"
+				+ " ------------------------\r\n"
+				+ "    \\\r\n"
+				+ "     \\\r\n"
+				+ "                                   .::!!!!!!!:.\r\n"
+				+ "  .!!!!!:.                        .:!!!!!!!!!!!!\r\n"
+				+ "  ~~~~!!!!!!.                 .:!!!!!!!!!UWWW$$$\r\n"
+				+ "      :$$NWX!!:           .:!!!!!!XUWW$$$$$$$$$P\r\n"
+				+ "      $$$$$##WX!:      .<!!!!UW$$$$\"  $$$$$$$$#\r\n"
+				+ "      $$$$$  $$$UX   :!!UW$$$$$$$$$   4$$$$$*\r\n"
+				+ "      ^$$$B  $$$$\\     $$$$$$$$$$$$   d$$R\"\r\n"
+				+ "        \"*$bd$$$$      '*$$$$$$$$$$$o+#\"\r\n"
+				+ "             \"\"\"\"          \"\"\"\"\"\"\"\r\n"
+				+ "");
 		new ADBControler();
+		//系统是否有ADB判断
+		if (!ADBControler.haveADB()) {
+			System.out.println("当前系统没有ADB");
+			System.exit(2);
+		}
 		// adb是否连接判断
 		if (!ADBControler.canADBconnect()) {
 			System.out.println("没有连接adb设备");
@@ -27,7 +47,7 @@ public class main {
 		} catch (NullPointerException e) {
 			// 在命令行中输入文字
 			new main().scanner();
-			ADBControler.sendtext(text,false,true);//这里不是GUI
+			ADBControler.sendtext(text,false,true,true);//这里不是GUI,自动切换键盘
 		}
 	}
 

@@ -7,11 +7,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+//v2.0新增GUI界面
 public class GUI {
 	public static JFrame windows = new JFrame("优学院考试粘贴 v2.0");//创建窗体
 	public void start() {
@@ -36,7 +38,7 @@ public class GUI {
 		jbutton_send.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ADBControler.sendtext(jtextarea_input.getText(),true,true);//获取输入框中的文本并发送到手机
+				ADBControler.sendtext(jtextarea_input.getText(),true,true,true);//获取输入框中的文本并发送到手机
 				jtextarea_input.requestFocus();//焦点回到输入框上
 			}
 		});
@@ -51,8 +53,29 @@ public class GUI {
 		//底部标签部分
 		JLabel jlabel_useless = new JLabel("                                    ");//占位而已
 		
+		//v2.1新增的键盘下拉列表标签提示
+		JLabel choice_Keyboard_tip = new JLabel("选择键盘:  ");
+		
+		//v2.1新增键盘下拉列表
+		String list[] = ADBControler.userKeyboard();
+		JComboBox<String> comboBox = new JComboBox<>(list);//创建一个下拉列表框
+		
+		//v2.1新增的键盘下拉列表确定按钮
+		JButton choice_Keyboard = new JButton("确定");
+		choice_Keyboard.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ADBControler cmd = new ADBControler();
+				cmd.commonmain("adb shell ime set "+comboBox.getSelectedItem(), false);
+				
+			}
+		});
 		
 		//把组件添加到容器
+		container_main.add(choice_Keyboard_tip);//v2.1版本新增的键盘下拉列表标签提示
+		container_main.add(comboBox);//v2.1版本的键盘下拉列表
+		container_main.add(choice_Keyboard);//v2.1版本的确定按钮
 		container_main.add(jscrollpane);//容器添加滚动面板
 		container_main.add(jbutton_send);
 		container_main.add(jlabel_useless);
