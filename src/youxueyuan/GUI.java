@@ -30,7 +30,14 @@ public class GUI {
 		container_main.setBackground(Color.GRAY);//v2.2的智障配色
 		
 		//文本框部分
-		JTextArea jtextarea_input = new JTextArea("开源项目:https://github.com/xmexg/yxyADBkbd"+"\n"+"请在此处填入要粘贴的答案",30,50);//默认显示的字,x行y列
+		JTextArea jtextarea_input = new JTextArea("开源项目:https://github.com/xmexg/yxyADBkbd"+"\n"+"请在此处填入要粘贴的答案",38,90);//默认显示的字,x行y列30,50
+		if((((String) main.OS.subSequence(0, 1)).toLowerCase()).equals("w")) {
+			jtextarea_input.setRows(38);
+			jtextarea_input.setColumns(90);
+		}else {
+			jtextarea_input.setRows(30);
+			jtextarea_input.setColumns(50);
+		}
 		jtextarea_input.setLineWrap(true);//自动换行
 		jtextarea_input.setFont(new Font("黑体",Font.PLAIN,14));//设置显示的文字
 		JScrollPane jscrollpane = new JScrollPane(jtextarea_input);//创建滚动面板,并给文本框添加滚动条
