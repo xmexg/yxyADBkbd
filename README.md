@@ -3,6 +3,9 @@
 
 ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向大佬致敬！
 
+### v2.2展示(ubuntu)
+![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/v2.2_ubuntu.png)
+
 # 正文：
 
 ### 运行环境：
@@ -49,12 +52,12 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
       其中　`-Dfile.encoding=UTF-8`　是指定使用UTF-8编码，当当前操作系统默认编码不为UTF-8编码时不可省略。
       ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/v2.0GUI.png)
       
-   <strike>6. 电脑在刚才弹出的命令行输入 `java  -jar  ./优学院(具体下载的名称).jar` 回车<s/trike>
+   <strike>6. 电脑在刚才弹出的命令行输入 `java  -jar  ./优学院(具体下载的名称).jar` 回车</strike>
    
-      如下情况可拔掉手机线重新连接，然后重新输入上面这条命令
+     如下情况可拔掉手机线重新连接，然后重新输入上面这条命令
       ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/cannotconnect.png)
       
-      如下情况连接成功：
+     如下情况连接成功：
       ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/connect.png)
 
    7. 点击手机要输入文字的输入框，让手机处于正在输入的状态，在此处粘贴要粘贴的文字(图形界面可以输入回车，命令行界面不可输入回车)，然后按回车，他会发送到手机输入框。
