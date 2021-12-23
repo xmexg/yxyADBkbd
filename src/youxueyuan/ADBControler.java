@@ -25,7 +25,7 @@ public class ADBControler {
 		for (int i = 0; i < lengthtext; i++) {
 			System.out.println("进度：" + (i + 1) + "/" + lengthtext + ":" + text.charAt(i));
 			if(isGui) {//这里让窗口标签显示进度
-				GUI.windows.setTitle("优学院考试粘贴 v2.1 (" + (i + 1) + "/" + lengthtext + ":" + text.charAt(i) + ")");
+				GUI.windows.setTitle("优学院考试粘贴 "+main.version+" (" + (i + 1) + "/" + lengthtext + ":" + text.charAt(i) + ")");
 			}
 			if(toBase64) {//这边编码有无法解决的大坑,留在以后解决
 //				System.out.println("截字:"+text.substring(i,i+1));

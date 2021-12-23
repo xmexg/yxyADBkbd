@@ -1,10 +1,13 @@
 package youxueyuan;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -13,23 +16,25 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+//v2.2的智障配色
 //v2.0新增GUI界面
 public class GUI {
-	public static JFrame windows = new JFrame("优学院考试粘贴 v2.1");//创建窗体
+	public static JFrame windows = new JFrame("优学院考试粘贴 "+main.version);//创建窗体
 	public void start() {
 		//窗口部分
 		windows.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//设置窗口关闭方式为退出并关闭程序
-		windows.setBounds(150, 150, 500, 650);//设置默认窗口大小
+		windows.setBounds(150, 150, 680, 750);//设置默认窗口大小
 		windows.setResizable(false);//窗口不可改变大小
 		Container container_main = windows.getContentPane();//获取窗口容器
 		container_main.setLayout(new FlowLayout());//设置流布局
+		container_main.setBackground(Color.GRAY);//v2.2的智障配色
 		
 		//文本框部分
-		JTextArea jtextarea_input = new JTextArea("开源项目:https://github.com/xmexg/yxyADBkbd"+"\n"+"请在此处填入要粘贴的答案",30,65);//默认显示的字,x行y列
+		JTextArea jtextarea_input = new JTextArea("开源项目:https://github.com/xmexg/yxyADBkbd"+"\n"+"请在此处填入要粘贴的答案",30,50);//默认显示的字,x行y列
 		jtextarea_input.setLineWrap(true);//自动换行
-		jtextarea_input.setFont(new Font("黑体",Font.PLAIN,14));
+		jtextarea_input.setFont(new Font("黑体",Font.PLAIN,14));//设置显示的文字
 		JScrollPane jscrollpane = new JScrollPane(jtextarea_input);//创建滚动面板,并给文本框添加滚动条
-		
+		jtextarea_input.setBackground(Color.LIGHT_GRAY);//v2.2的智障配色
 		
 		//按钮部分
 		JButton jbutton_send = new JButton("发送");
@@ -50,8 +55,34 @@ public class GUI {
 			}
 		});
 		
-		//底部标签部分
-		JLabel jlabel_useless = new JLabel("                                    ");//占位而已
+		//底部标签部分,在v2.2中用于监控鼠标和键盘动作，可根据滚轮滑动来移动手机光标，根据键盘功能键来操作手机文本
+		JLabel jlabel_useless = new JLabel("字数统计");//占位而已，在v2.2加入了些新功能
+		jlabel_useless.setText("总计:"+jtextarea_input.getText().length()+"字");
+		jlabel_useless.setOpaque(true);//设置标签不透明
+		jlabel_useless.setBackground(Color.orange);//标签背景颜色
+		jlabel_useless.setForeground(Color.RED);//标签字体颜色
+		jlabel_useless.setFont(new java.awt.Font("宋体", 1, 20));//设置字体为宋体，加粗，20号字
+		jtextarea_input.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {//当输入框文字改变时重新计算文字数量
+				// TODO 自动生成的方法存根
+				jlabel_useless.setText("总计:"+jtextarea_input.getText().length()+"字");
+			}
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO 自动生成的方法存根
+				jlabel_useless.setText("总计:"+jtextarea_input.getText().length()+"字");
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO 自动生成的方法存根
+				jlabel_useless.setText("总计:"+jtextarea_input.getText().length()+"字");
+				
+			}
+		});
 		
 		//v2.1新增的键盘下拉列表标签提示
 		JLabel choice_Keyboard_tip = new JLabel("选择键盘:  ");
@@ -59,6 +90,7 @@ public class GUI {
 		//v2.1新增键盘下拉列表
 		String list[] = ADBControler.userKeyboard();
 		JComboBox<String> comboBox = new JComboBox<>(list);//创建一个下拉列表框
+		comboBox.setBackground(Color.GRAY);
 		
 		//v2.1新增的键盘下拉列表确定按钮
 		JButton choice_Keyboard = new JButton("确定");
