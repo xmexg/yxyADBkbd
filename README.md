@@ -49,7 +49,7 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
       其中　`-Dfile.encoding=UTF-8`　是指定使用UTF-8编码，当当前操作系统默认编码不为UTF-8编码时不可省略。
       ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/v2.0GUI.png)
       
-   <strike>6. 电脑在刚才弹出的命令行输入 `java  -jar  ./优学院(具体下载的名称).jar` 回车
+   <strike>6. 电脑在刚才弹出的命令行输入 `java  -jar  ./优学院(具体下载的名称).jar` 回车<s/trike>
    
       如下情况可拔掉手机线重新连接，然后重新输入上面这条命令
       ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/cannotconnect.png)
@@ -57,16 +57,19 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
       如下情况连接成功：
       ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/connect.png)
 
-   7. 点击手机要输入文字的输入框，让手机处于正在输入的状态，在此处粘贴要粘贴的文字，注意这段文字不能有回车，然后按回车，他会发送到手机输入框。
-      注：空格会被自动取消。</strike>
+   7. 点击手机要输入文字的输入框，让手机处于正在输入的状态，在此处粘贴要粘贴的文字(图形界面可以输入回车，命令行界面不可输入回车)，然后按回车，他会发送到手机输入框。
+      注：空格会被自动取消。
       
    
 
 
 
 - Linux安装：
+  在v2.2开始默认打开gui界面，此处以ubuntu为例，下载jar文件，给文件可执行权限，双击运行：
+  ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/error_Executable.png)
+  ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/solve_error_Executable.png)
   
-  更新源:`sudo apt-get update`
+  <strike>更新源:`sudo apt-get update`
   
   安装jdk:`sudo apt-get install openjdk-17-jdk` 
   
@@ -78,7 +81,7 @@ ADBKeyboard由GitHub大佬提供：https://github.com/senzhk/ADBKeyBoard ，向�
   cd到这个jar文件目录:`cd ./yxyADBkbd/Releases/`
   
   运行jar文件:`java -jar ./default.jar`
-  ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/linux_jar.png)
+  ![image](https://github.com/xmexg/yxyADBkbd/blob/main/files/linux_jar.png)</strike>
 
 <strike>### 结尾：
   当前输入法无法正常打字
