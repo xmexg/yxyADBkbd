@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class main {
 	public static String text;
-	public static String version = "v2.2";
+	public static String version = "v2.3";
 	public static String OS = System.getProperty("os.name");
 	
 	public static void main(String[] args) {
