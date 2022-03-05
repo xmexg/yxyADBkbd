@@ -56,10 +56,11 @@ public class ADBControler {
 	public static void sendtext(String text,Boolean isGui,Boolean toBase64,Boolean autoswitchkeyboard) {
 		//这是发送base64编码:adb shell am broadcast -a ADB_INPUT_B64 --es msg "5rWL6K+V"
 		//这是直接发送文字:adb shell am broadcast -a ADB_INPUT_TEXT --es msg "测试"
+		Object chooseADBdevice = nowADBdevice;//v2.5应对多线程
 		if(autoswitchkeyboard) {//获取当前键盘
 			now_keyboard=ADBControler.getnowkeyboard();
 		}
-		ADBControler.commonmain_adb("adb -s "+nowADBdevice+" shell ime set com.android.adbkeyboard/.AdbIME", true);
+		ADBControler.commonmain_adb("adb -s "+chooseADBdevice+" shell ime set com.android.adbkeyboard/.AdbIME", true);
 		try {//暂停一下,免得出现开头掉字现象
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
@@ -68,6 +69,10 @@ public class ADBControler {
 		}
 		int lengthtext = text.length();
 		for (int i = 0; i < lengthtext; i++) {
+			if(Thread.currentThread().isInterrupted()) {//v2.5线程终止
+				ADBControler.commonmain_adb("adb -s "+nowADBdevice+" shell ime set "+now_keyboard, false);
+				return;
+			}
 			System.out.println("进度：" + (i + 1) + "/" + lengthtext + ":" + text.charAt(i));
 			if(isGui) {//这里让窗口标签显示进度
 				GUI.windows.setTitle("优学院考试粘贴 "+Main.version+" (" + (i + 1) + "/" + lengthtext + ":" + text.charAt(i) + ")");
@@ -261,12 +266,11 @@ public class ADBControler {
 	}
 	
 	//在v2.4中自动安装和启用ADB键盘,
-	public String install_and_enable_adbkeyboard(String device) {
-		String returntext = "";
+	public boolean install_and_enable_adbkeyboard(String device) {
 		for(int i=0;!existADBKeyboard(device);i++) {
 			GUI.windows.setTitle("当前设备没有ADB键盘,正在尝试安装...");
 			String apkurl = "src"+File.separator+"youxueyuan"+File.separator+"ADBKeyboard.apk";
-			returntext += commonmain_adb("adb -s "+device+" install "+apkurl, true);
+			commonmain_adb("adb -s "+device+" install "+apkurl, true);
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
@@ -279,18 +283,18 @@ public class ADBControler {
 			if(i>4) {
 				System.out.println("设备:"+device+" 多次安装ADB键盘失败!");
 				GUI.windows.setTitle("设备:"+device+" 多次安装ADB键盘失败!");
-				return returntext;
+				return false;
 			}
 		}
 		for(int i=0;!haveADBKeyboard(device);i++) {
-			returntext = enable_adbkeyboard(device, "com.android.adbkeyboard/.AdbIME");
+			enable_adbkeyboard(device, "com.android.adbkeyboard/.AdbIME");
 			if(i>3) {
 				System.out.println("设备:"+device+" 无法激活ADB键盘");
 				GUI.windows.setTitle("设备:"+device+" 无法激活ADB键盘");
-				return returntext;
+				return false;
 			}
 		}
-		return returntext;
+		return true;
 	}
 	
 	//在v2.4中安装指定程序

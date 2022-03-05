@@ -11,12 +11,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -27,6 +27,8 @@ import javax.swing.JTextArea;
 public class GUI {
 	
 	ADBControler cmd = new ADBControler();
+	ExecutorService service = Executors.newFixedThreadPool(ADBControler.ADBlists.length);//v2.5创建线程池，里面容纳和连接设备一样多的线程
+	
 	// 窗口部分
 	Toolkit toolkit = Toolkit.getDefaultToolkit();
 	int Screen_Width = (int) (toolkit.getScreenSize().getWidth() * 0.5);
@@ -93,14 +95,38 @@ public class GUI {
 		jtextarea_input.setBackground(new Color(0, 146, 174));// v2.2的智障配色
 		jtextarea_input.setForeground(new Color(204,251,234));
 		// 按钮部分
-		JButton jbutton_send = new JButton("发送");
-		JButton jbutton_exit = new JButton("退出");
+		JButton jbutton_send = new JButton("发送文字");
+		JButton jbutton_exit = new JButton("终止任务");//v2.5中改成了停止线程
+		
 		// 监控发送按钮
 		jbutton_send.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cmd.install_and_enable_adbkeyboard((String)cmd.nowADBdevice);
-				ADBControler.sendtext(jtextarea_input.getText(), true, true, true);// 获取输入框中的文本并发送到手机
+				
+				boolean ok_to_send_txt = cmd.install_and_enable_adbkeyboard((String)cmd.nowADBdevice);//确保当前设备有adbkeyboard
+				//v2.5的发送时启动一个新线程
+				if(ok_to_send_txt) {
+					//第一种可行的方法
+//					Thread sendtxt = new Thread(new Runnable() {
+//						@Override
+//						public void run() {
+//							// TODO 自动生成的方法存根
+//							ADBControler.sendtext(jtextarea_input.getText(), true, true, true);// 获取输入框中的文本并发送到手机
+//						}
+//					});
+//					sendtxt.start();
+					
+					//第二种可行的方法
+					//这里如果线程池满了的话，先执行1线程，然后再执行2线程
+					service.submit(new Runnable() {
+						@Override
+						public void run() {
+							// TODO 自动生成的方法存根
+							ADBControler.sendtext(jtextarea_input.getText(), true, true, true);
+						}
+					});
+					
+				}
 				jtextarea_input.requestFocus();// 焦点回到输入框上
 			}
 		});
@@ -108,7 +134,10 @@ public class GUI {
 		jbutton_exit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);// 退出程序
+//				System.exit(0);// 退出程序
+				//v2.5结束所有线程
+				service.shutdownNow();
+				service = Executors.newFixedThreadPool(ADBControler.ADBlists.length);
 			}
 		});
 

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 	public static String text;
-	public static String version = "v2.4";
+	public static String version = "v2.5";
 	public static String OS = System.getProperty("os.name");
 	public static boolean inside_adb = false;
 	public static String logo = "";//在v2.4更换为随机logo
